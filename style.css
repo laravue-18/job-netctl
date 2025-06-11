@@ -652,7 +652,8 @@ button.netctl-home__toggle-btn {
     position: relative;
 }
 
-.netctl-tech__caption::after {
+.netctl-tech__caption::after,
+.netctl-tech__card::after {
     content: '';
     position: absolute;
     z-index: -1;
@@ -1040,6 +1041,9 @@ button.netctl-home__toggle-btn {
         top: 100%;
         width: 1px;
         height: 60px;
+    }
+    .netctl-tech__card::after {
+        display: none;
     }
     .netctl-tech__caption:first-child::before {
         display: none;
