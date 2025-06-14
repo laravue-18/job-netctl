@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, p {
 
 .netctl-container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     overflow: hidden;
 }
@@ -85,10 +85,7 @@ h1, h2, h3, h4, h5, p {
 }
 
 .netctl-section.home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
+    padding: 48px 16px;
 }
 
 .netctl-home__header {
@@ -282,16 +279,17 @@ button.netctl-home__toggle-btn {
 }
 
 .netctl-anchor-button {
-    font-weight: 500;
-    color: white;
     width: 112px;
     height: 44px;
+    padding-inline: 0;
+    color: white;
+    font-weight: 500;
     border: 2px solid #C778DD;
-    font-size: 10px;
+    font-size: 9px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 6px;
 }
 
 .home .netctl-anchor-button.install {
@@ -486,7 +484,8 @@ button.netctl-home__toggle-btn {
 .netctl-why__bg_1 {
     position: absolute;
     left: 32px;
-    bottom: 40px;
+    bottom: 8px;
+    display: none;
 }
 
 .netctl-why__bg_2 {
@@ -507,8 +506,7 @@ button.netctl-home__toggle-btn {
 .netctl-anchor-button.right-bottom {
     bottom: 0;
     right: 60px;
-    flex-direction: column-reverse;
-    transform: none;
+    flex-direction: column;
 }
 
 /* Knowledge Section */
@@ -528,7 +526,13 @@ button.netctl-home__toggle-btn {
     height: calc(100vh - 290px);
     border: 3px solid var(--color-primary);
     background: var(--color-dark);
-    overflow: hidden;
+    overflow: auto;         
+    scrollbar-width: none;  
+    -ms-overflow-style: none;
+}
+
+.netctl-knowledge__blogs::-webkit-scrollbar {
+  display: none;
 }
 .netctl-blog-card {
     width: 275px;
@@ -646,7 +650,7 @@ button.netctl-home__toggle-btn {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: white;
     position: relative;
@@ -698,10 +702,10 @@ button.netctl-home__toggle-btn {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-inline: 16px;
+    padding-inline: 8px;
     border-bottom: 1px solid var(--color-secondary);
     color: var(--color-primary);
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .netctl-tech__card-content {
@@ -726,6 +730,7 @@ button.netctl-home__toggle-btn {
 .netctl-tech__card-btn {
     width: 116px;
     height: 28px;
+    font-size: 12px;
     border: 1px solid var(--color-primary);
 }
 
@@ -746,8 +751,15 @@ button.netctl-home__toggle-btn {
 
 
 @media (min-width: 1024px) {
+    .netctl-section {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+    }
     .netctl-section.home {
+        display: flex;
         align-items: start;
+        justify-content: center;
     }
     .netctl-home__main {
         width: 64rem;
@@ -909,7 +921,6 @@ button.netctl-home__toggle-btn {
     .netctl-anchor-button.right {
         top: 353px;
         right: 1px;
-        flex-direction: row-reverse;
     }
     .netctl-anchor-button.right svg {
         transform: rotate(-90deg);
@@ -924,19 +935,19 @@ button.netctl-home__toggle-btn {
     }
     .netctl-anchor-button.left-bottom {
         bottom: 0;
-        flex-direction: column-reverse;
     }
     .netctl-anchor-button.right-bottom {
         bottom: 0;
         right: -160px;
         transform: rotate(-90deg);
         transform-origin: bottom left;
-    }
-    
-    .netctl-anchor-button.right-bottom svg {
-        transform: rotate(90deg);
+        flex-direction: row-reverse;
     }
 
+    .netctl-anchor-button.right-bottom span:last-child {
+        transform: rotate(180deg);
+    }
+    
     .netctl-anchor-button.top-right {
         right: 200px;
     }
@@ -1092,6 +1103,7 @@ button.netctl-home__toggle-btn {
     .netctl-tech__card-btn {
         width: 157px;
         height: 37px;
+        font-size: 16px;
         border: 1px solid var(--color-primary);
     }
     
@@ -1210,7 +1222,6 @@ button.netctl-home__toggle-btn {
         border: 3px solid var(--color-primary);
         background: var(--color-dark);
         padding: 30px;
-        overflow: hidden;
         display: grid;
         box-sizing: border-box;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1267,3 +1278,28 @@ button.netctl-home__toggle-btn {
 .flex { display: flex; }
 .items-center { align-items: center;}
 .justify-between { justify-content: space-between;}
+.section-transition {
+    transition: all 1000ms ease-in;
+}
+
+.translate-x-0 {
+    transform: translateX(0);
+}
+.translate-left {
+    transform: translateX(-100%);
+}
+.translate-right {
+    transform: translateX(100%);
+}
+.translate-up {
+    transform: translateY(-100%);
+}
+.translate-down {
+    transform: translateY(100%);
+}
+.rotate-90 {
+    transform: rotate(90deg);
+}
+.flex-col {
+    flex-direction: column;
+}
